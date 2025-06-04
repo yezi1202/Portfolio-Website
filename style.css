@@ -1,0 +1,102 @@
+:root{
+    --primary-color:#39735d;
+    --btn-color:#ebf48f;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html,
+body{
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+.btn{
+    padding: 15px 10px;
+    background-color: var(--btn-color);
+    border: 5px solid black;
+    border-radius: 20px;
+    width: max-content;
+}
+.nav-section{
+    width: calc(100vw - 60px);
+    height: calc(100vh - 40px);
+    background-color: var(--primary-color);
+    position: relative;
+    padding: 20px 25px;
+    scroll-snap-align: start;
+    
+}
+.nav-section:nth-child(1)
+>button{
+    font-size: 80px; 
+    transform:  
+                translateX(10%)
+                translateY(10%);
+    position: inherit;
+    z-index: 1;
+}
+.nav-section:nth-child(1)
+>div:nth-child(2){
+    font-size:large; 
+    font-weight: 900;
+    width: max-content;
+    height: 20%;
+    position: relative;
+}
+.nav-section:nth-child(1)
+>div:nth-child(2) h1{
+    top: 0;
+    left: 0;
+    transform: 
+                scale(8) 
+                translateX(50%) 
+                translateY(25%);
+    color: white;
+    text-shadow: -1px 0 0 black;
+}
+.nav-section:nth-child(1)
+>div:nth-child(2) i{
+    color: var(--btn-color);
+    transform: scale(10);
+    position: absolute;
+    top: 130%;
+    left: 650%;
+    text-shadow:
+                0 0 0px black,
+                -1px 0px 0 black, 
+                0 0 0 black, 
+                1px 0px 0 black;
+}
+.nav-section:nth-child(1)
+>div:nth-child(3){
+    border: 5px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 45%;
+    margin-top: 50px;
+}
+.nav-section:nth-child(1)
+>div:nth-child(3) img{
+    margin-top: -20%;
+}
+.nav-section:nth-child(1)
+>div:nth-child(4){
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.nav-section:nth-child(1)
+>div:nth-child(4) button{
+    margin: 0 20px;
+    width: 200px;
+}
+.nav-section H1{
+    transform: scale(2);
+    color: white;
+    margin-top: 50px;
+}
