@@ -10,16 +10,21 @@ function opentLetter(flg,s1){
     },1000);
 }
 var urlParams  = new URLSearchParams(window.location.search);
-urlParams.get('nu')
-var{nam,nu,khach,date,time} = {};
-nam = urlParams.get('nam');
-nu = urlParams.get('nu');
-khach = urlParams.get('khach');
-date = urlParams.get('date');
-time = urlParams.get('time');
+if(urlParams){
+    let gid = urlParams.get('gid');
+    let p = urlParams.get('p')
+    document.querySelector('.baobi .khach').innerHTML = (p ? p:'Bạn và người thương');
+    let url = 'https://docs.google.com/spreadsheets/d/e/'+urlParams.get('fid')+'/pub?'+(gid ? ('gid='+gid+'&single=true&') : '') + 'output=csv';
+    Papa.parse(url, {
+        download: true,
+        header: true,
+        complete: function(results) {
+                    loaddataCSv(results.data[0])
+        }
+    });
+}
 
-document.querySelector('.baobi .ten').innerHTML = `<h1>${nam} <br>&<br> ${nu}</h1>`;
-document.querySelector('.baobi .date').innerHTML = date;
-document.querySelector('.baobi .khach').innerHTML = (khach ? khach:'Bạn và người thương');
-
-        
+function loaddataCSv(data){
+    document.querySelector('.baobi .ten').innerHTML = `<h1>${data["Tên bao bì"].replace(/\n/g, '<br>')}</h1>`;
+    document.querySelector('.baobi .date').innerHTML = data["Ngày cưới"];
+}     
