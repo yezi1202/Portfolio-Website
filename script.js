@@ -1,6 +1,8 @@
 AOS.init();
-function opentLetter(flg,s1){
-    flg.classList.add("opent");
+var device = getDeviceType();
+document.body.setAttribute(device,'');
+function opentLetter(s1){
+    document.body.setAttribute('opent','');
     setTimeout(()=>{
             s1.scrollIntoView({
             behavior: 'smooth',
@@ -25,6 +27,31 @@ if(urlParams){
 }
 
 function loaddataCSv(data){
-    document.querySelector('.baobi .ten').innerHTML = `<h1>${data["Tên bao bì"].replace(/\n/g, '<br>')}</h1>`;
+    let i = 0;
+    Array.from(document.querySelectorAll('.tenthiep'))
+    .forEach((e)=>{
+        e.innerHTML = `<h1>${data["Tên bao bì"].replace(/\n/g, i < 1  ? '<br>':' ')}</h1>`;
+        i++
+    })
     document.querySelector('.baobi .date').innerHTML = data["Ngày cưới"];
-}     
+}   
+
+
+function getDeviceType() {
+      const ua = navigator.userAgent;
+    
+      if (/Mobi|Android/i.test(ua)) {
+       return 'mobile';
+      }
+    
+      if (/Tablet|iPad/i.test(ua)) {
+       return 'tablet';
+      }
+    
+      return 'desktop';
+}
+function isMobile(){
+    const ua = navigator.userAgent;
+    return /Mobi|Android/i.test(ua);
+}
+    

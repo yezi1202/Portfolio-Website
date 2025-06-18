@@ -2,24 +2,41 @@
     --bgr-index: url('Image/IconImage/bgrIndex.jpg');
     --layout-color: #fff;
     --text-font: 'Manrope', sans-serif;
-    --title-font: 'Dancing Script', serif;
+    --title-font: Sail,cursive;
     --script-font: 'Great Vibes', cursive;
     --text-color: #6a6a6a;
-    --h1-font-size: 88px;
+    --h1-font-size: 32px;
     --h2-font-size: 70px;
     --h3-font-size: 40px;
     --h4-font-size: 24px;
     --h5-font-size: 22px;
-    --h6-font-size: 20px;
+    --h6-font-size: 16px;
     --h1-font-weight: 600;
     --h2-font-weight: 600;
     --h3-font-weight: 600;
     --h4-font-weight: 600;
 }
+[mobile]{
+    --h1-font-size: 24px;
+}
+[mobile] h1{
+    font-size: var(--h1-font-size);
+    margin: 12px 0;
+    font-weight: bold;
+}
+[mobile] p{
+    margin: 4px 0;
+}
 .title-text{
     font-family: var(--title-font);
     font-style: 36px;
-    text-decoration: underline;
+    text-transform: capitalize
+}
+.script-text{
+    font-family: var(--script-font);
+}
+.flex-content{
+    display: flex;
 }
 body{
     padding: 0;
@@ -46,7 +63,9 @@ body{
     justify-content: center;
     flex-direction: column;
     font-family: var(--script-font);
-    font-size: 32px;
+    font-size: var(--h1-font-size);
+    letter-spacing: 0.05em; 
+    text-transform: capitalize;
     border-bottom: 2px solid rgba(0, 0, 0, 0.397);
     position: relative;
 }
@@ -55,19 +74,28 @@ body{
     left: 2px;
     top: 0;
     height: 100%;
+    z-index: -1;
+    opacity: 0.8;
 }
-.baobi .ten{
+.baobi .tenthiep{
     position: absolute;
     left: 70%;
     top: 0;
-    padding: 0 10px;
+    padding: 0 50px;
     height: 100vh;
     width: max-content;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     background: #00000038;
     color: #000000a8;
+}
+[mobile] .baobi .tenthiep{
+    position: unset;
+    background-color: unset;
+    height: auto;
+    width: auto;
 }
 .baobi>div:nth-child(2){
     height: 30%;
@@ -90,13 +118,15 @@ body{
     animation: scaleanm 2s infinite;
     cursor: pointer;
 }
-body:has(.opent) .baobi .ten{
+[desktop][opent] .baobi .tenthiep,
+[tablet][opent]  .baobi .tenthiep
+{
     animation: bobaobi 2s forwards;
 }
 section{
     width: 100vw;
     height: 100vh;
-    display: none;
+    /* display: none; */
 }
 body:has(.opent) section{
     display: block;
@@ -111,7 +141,7 @@ body:has(.opent) section{
 }
 .p-info .title{
     font-family: var(--script-font);
-    font-size: 36px;
+    font-size: var(--h1-font-size);
     text-align: center;
     text-decoration: underline;
 }
@@ -132,7 +162,6 @@ body:has(.opent) section{
     height: 550px;
     overflow: hidden;
     border-radius: 5px;
-    box-shadow: 1px 1px 20px black;
 }
 .p-info .khung img{
     height: 100%;
@@ -162,6 +191,11 @@ body:has(.opent) section{
         transform: translateX(1000px);
     }
 }
+
+[mobile] .flex-content{
+    flex-direction: column;
+}
+
 /* @keyframes open{
     from{
         transform: rotate(0) ;
