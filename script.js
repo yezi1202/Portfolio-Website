@@ -15,7 +15,7 @@ var urlParams  = new URLSearchParams(window.location.search);
 if(urlParams){
     let gid = urlParams.get('gid');
     let p = urlParams.get('p')
-    document.querySelector('.baobi .khach').innerHTML = (p ? p:'Bạn và người thương');
+    document.querySelector('.baobi .khach').innerHTML = (isMobile() ? '<br>': '') +(p ? p:'Bạn và người thương');
     let url = 'https://docs.google.com/spreadsheets/d/e/'+urlParams.get('fid')+'/pub?'+(gid ? ('gid='+gid+'&single=true&') : '') + 'output=csv';
     Papa.parse(url, {
         download: true,
